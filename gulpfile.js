@@ -34,3 +34,19 @@ gulp.task('travis', ['jshint'], function () {
 });
 
 gulp.task('default', ['watch']);
+
+gulp.task('exampleHTML', function () {
+    var readFileSync = require('fs').readFileSync;
+    var filename = './test/example/example.thyme';
+    var source = readFileSync(filename, 'utf8');
+    var tokenTypes = require('./lib/thymeTokens').tokens;
+    var Lexer = require('./lib/Lexer').Lexer;
+    var lexer = new Lexer(filename, source, tokenTypes);
+    var token = lexer.next();
+    var output = "";
+    while (token) {
+        output += token.toHTML();
+        token = lexer.next();
+    }
+    console.log(output);
+});
