@@ -2,9 +2,8 @@
 // tests for Character and Scanner
 "use strict";
 
-// Also uses character but not required to import
-//var Character = require("../lib/Character.js").Character;
-var Scanner = require("../lib/Scanner.js").Scanner;
+var reload = require('require-reload')(require);
+var Scanner = reload("../lib/Scanner.js").Scanner;
 
 var scanString = function (filename, string) {
     var errors = [];

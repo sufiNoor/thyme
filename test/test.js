@@ -4,6 +4,7 @@
 
 var reload = require('require-reload')(require);
 var testScanner = reload('./testScanner.js').testScanner;
+var testLexer = reload('./testLexer.js').testLexer;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Run All Tests
@@ -16,6 +17,7 @@ var run = function () {
         var errors = [];
         // place all tests here
         errors = errors.concat(testScanner());
+        errors = errors.concat(testLexer());
         // end of tests
         if (errors.length > 0) {
             for (var i = 0; i < errors.length; i++) {
@@ -26,7 +28,7 @@ var run = function () {
             passedAllTests = false;
         }
     } catch (e) {
-        console.console.error(e);
+        console.error(e.stack);
         passedAllTests = false;
     }
     if (!passedAllTests) { console.log("Tests failed!"); }
