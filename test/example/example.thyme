@@ -1,0 +1,53 @@
+//exmaple of preprocessor code
+@doctype("html")
+
+$STRING: "Hello!"
+$NUMBER: 3.141
+$LIST: [1,2,3]
+$OBJECT: {"text":"hello world"}
+$BOOLEAN: true
+$JSON: @import("example.json")
+$MY_NAME: $JSON["name"]
+
+//invalid tokens
+
+/*
+multiline comment
+this is header template
+*/
+@template header:
+    .header:
+        h1#title: "Html Preprocessor by " $MY_NAME
+        hr
+
+@template footer:
+    .footer:
+        hr
+        "&copy; 2016 "
+        a{href:"http://davidjcastner.com/"}: $MY_NAME
+
+/*** LAYOUT ***/
+@template layout($content):
+    html:
+        head:
+            meta{charset:"utf-8"}
+            meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
+            title: "Html Preprocessor"
+            link{href:"style.css"}
+        body:
+            @comment("This is a comment in html")
+            @header
+            .content: $content
+            @footer
+
+@template index:
+    h3:
+        $HELLO
+    p:
+        "My name is "
+        strong: $MY_NAME
+    p:
+        "This is my awesome html preprocessor"
+    pre.imported-text: @import("example.txt")
+
+@layout(@index)
