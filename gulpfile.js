@@ -3,7 +3,7 @@ var jshint = require('gulp-jshint');
 
 gulp.task('jshint', function() {
     return gulp.src(['./gulpfile.js', './test/*.js', './lib/*.js'])
-    .pipe(jshint({ 'node': true, 'strict': true }))
+    .pipe(jshint({ 'node': true }))
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
