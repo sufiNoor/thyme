@@ -1,0 +1,32 @@
+{
+  "name": "thyme",
+  "version": "0.0.0",
+  "description": "Templating HYper-text Markup made Easy",
+  "main": "/lib/thyme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidjcastner/thyme.git"
+  },
+  "keywords": [
+    "thyme",
+    "template",
+    "templating",
+    "hyper",
+    "text",
+    "hypertext",
+    "markup",
+    "compile"
+  ],
+  "author": "David Castner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidjcastner/thyme/issues"
+  },
+  "homepage": "https://github.com/davidjcastner/thyme#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
