@@ -9,8 +9,6 @@ $BOOLEAN: true
 $JSON: @import("example.json")
 $MY_NAME: $JSON["name"]
 
-//invalid tokens
-
 /*
 multiline comment
 this is header template

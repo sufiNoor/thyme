@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><title>Syntax Demo</title><style>
+.comment { color: #a0a0a0; }
+.number { color: #cc00ff; }
+.string { color: #008000; }
+.value { color: #00cccc; font-weight: bold; }
+.keyword { color: #6600cc; font-weight: bold; }
+.template { color: #0000cc; font-weight: bold; }
+.identifier { color: #000000; }
+.variable { color: #0000cc; }
+.id { color: #0099ff; }
+.class { color: #ff9900; }
+.error { background-color: #ff0000; color: #ffffff; font-weight: bold; }
+</style></head><body>
+<pre>
+<span class="comment">//exmaple of preprocessor code</span><span class="newline">
+</span><span class="keyword">@doctype</span><span class="symbol">(</span><span class="string">"html"</span><span class="symbol">)</span><span class="newline">
+</span><span class="newline">
+</span><span class="variable">$STRING</span><span class="symbol">:</span><span class="whitespace"> </span><span class="string">"Hello!"</span><span class="newline">
+</span><span class="variable">$NUMBER</span><span class="symbol">:</span><span class="whitespace"> </span><span class="number">3.141</span><span class="newline">
+</span><span class="variable">$LIST</span><span class="symbol">:</span><span class="whitespace"> </span><span class="symbol">[</span><span class="number">1</span><span class="symbol">,</span><span class="number">2</span><span class="symbol">,</span><span class="number">3</span><span class="symbol">]</span><span class="newline">
+</span><span class="variable">$OBJECT</span><span class="symbol">:</span><span class="whitespace"> </span><span class="symbol">{</span><span class="string">"text"</span><span class="symbol">:</span><span class="string">"hello world"</span><span class="symbol">}</span><span class="newline">
+</span><span class="variable">$BOOLEAN</span><span class="symbol">:</span><span class="whitespace"> </span><span class="value">true</span><span class="newline">
+</span><span class="variable">$JSON</span><span class="symbol">:</span><span class="whitespace"> </span><span class="keyword">@import</span><span class="symbol">(</span><span class="string">"example.json"</span><span class="symbol">)</span><span class="newline">
+</span><span class="variable">$MY_NAME</span><span class="symbol">:</span><span class="whitespace"> </span><span class="variable">$JSON</span><span class="symbol">[</span><span class="string">"name"</span><span class="symbol">]</span><span class="newline">
+</span><span class="newline">
+</span><span class="comment">/*
+multiline comment
+this is header template
+*/</span><span class="newline">
+</span><span class="keyword">@template</span><span class="whitespace"> </span><span class="identifier">header</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">    </span><span class="class">.header</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">        </span><span class="identifier">h1</span><span class="id">#title</span><span class="symbol">:</span><span class="whitespace"> </span><span class="string">"Html Preprocessor by "</span><span class="whitespace"> </span><span class="variable">$MY_NAME</span><span class="newline">
+</span><span class="whitespace">        </span><span class="identifier">hr</span><span class="newline">
+</span><span class="newline">
+</span><span class="keyword">@template</span><span class="whitespace"> </span><span class="identifier">footer</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">    </span><span class="class">.footer</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">        </span><span class="identifier">hr</span><span class="newline">
+</span><span class="whitespace">        </span><span class="string">"&copy; 2016 "</span><span class="newline">
+</span><span class="whitespace">        </span><span class="identifier">a</span><span class="symbol">{</span><span class="identifier">href</span><span class="symbol">:</span><span class="string">"http://davidjcastner.com/"</span><span class="symbol">}</span><span class="symbol">:</span><span class="whitespace"> </span><span class="variable">$MY_NAME</span><span class="newline">
+</span><span class="newline">
+</span><span class="comment">/*** LAYOUT ***/</span><span class="newline">
+</span><span class="keyword">@template</span><span class="whitespace"> </span><span class="identifier">layout</span><span class="symbol">(</span><span class="variable">$content</span><span class="symbol">)</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">    </span><span class="identifier">html</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">        </span><span class="identifier">head</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">            </span><span class="identifier">meta</span><span class="symbol">{</span><span class="identifier">charset</span><span class="symbol">:</span><span class="string">"utf-8"</span><span class="symbol">}</span><span class="newline">
+</span><span class="whitespace">            </span><span class="identifier">meta</span><span class="symbol">{</span><span class="identifier">name</span><span class="symbol">:</span><span class="string">"viewport"</span><span class="symbol">,</span><span class="whitespace"> </span><span class="identifier">content</span><span class="symbol">:</span><span class="string">"width=device-width, initial-scale=1.0"</span><span class="symbol">}</span><span class="newline">
+</span><span class="whitespace">            </span><span class="identifier">title</span><span class="symbol">:</span><span class="whitespace"> </span><span class="string">"Html Preprocessor"</span><span class="newline">
+</span><span class="whitespace">            </span><span class="identifier">link</span><span class="symbol">{</span><span class="identifier">href</span><span class="symbol">:</span><span class="string">"style.css"</span><span class="symbol">}</span><span class="newline">
+</span><span class="whitespace">        </span><span class="identifier">body</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">            </span><span class="keyword">@comment</span><span class="symbol">(</span><span class="string">"This is a comment in html"</span><span class="symbol">)</span><span class="newline">
+</span><span class="whitespace">            </span><span class="template">@header</span><span class="newline">
+</span><span class="whitespace">            </span><span class="class">.content</span><span class="symbol">:</span><span class="whitespace"> </span><span class="variable">$content</span><span class="newline">
+</span><span class="whitespace">            </span><span class="template">@footer</span><span class="newline">
+</span><span class="newline">
+</span><span class="keyword">@template</span><span class="whitespace"> </span><span class="identifier">index</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">    </span><span class="identifier">h3</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">        </span><span class="variable">$HELLO</span><span class="newline">
+</span><span class="whitespace">    </span><span class="identifier">p</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">        </span><span class="string">"My name is "</span><span class="newline">
+</span><span class="whitespace">        </span><span class="identifier">strong</span><span class="symbol">:</span><span class="whitespace"> </span><span class="variable">$MY_NAME</span><span class="newline">
+</span><span class="whitespace">    </span><span class="identifier">p</span><span class="symbol">:</span><span class="newline">
+</span><span class="whitespace">        </span><span class="string">"This is my awesome html preprocessor"</span><span class="newline">
+</span><span class="whitespace">    </span><span class="identifier">pre</span><span class="class">.imported-text</span><span class="symbol">:</span><span class="whitespace"> </span><span class="keyword">@import</span><span class="symbol">(</span><span class="string">"example.txt"</span><span class="symbol">)</span><span class="newline">
+</span><span class="newline">
+</span><span class="template">@layout</span><span class="symbol">(</span><span class="template">@index</span><span class="symbol">)</span><span class="newline">
+</span>
+</pre>
+</body></html>

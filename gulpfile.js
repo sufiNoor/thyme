@@ -35,18 +35,23 @@ gulp.task('travis', ['jshint'], function () {
 
 gulp.task('default', ['watch']);
 
-gulp.task('exampleHTML', function () {
+gulp.task('generateSyntaxExample', function () {
     var readFileSync = require('fs').readFileSync;
-    var filename = './test/example/example.thyme';
-    var source = readFileSync(filename, 'utf8');
+    var wrapperHead = readFileSync('./test/example/wrapperHead.html', 'utf8');
+    var wrapperFoot = readFileSync('./test/example/wrapperFoot.html', 'utf8');
+    var inputFile = './test/example/example.thyme';
+    var source = readFileSync(inputFile, 'utf8');
     var tokenTypes = require('./lib/thymeTokens').tokens;
     var Lexer = require('./lib/Lexer').Lexer;
-    var lexer = new Lexer(filename, source, tokenTypes);
+    var lexer = new Lexer(inputFile, source, tokenTypes);
     var token = lexer.next();
     var output = "";
     while (token) {
         output += token.toHTML();
         token = lexer.next();
     }
-    console.log(output);
+    var writeFileSync = require('fs').writeFileSync;
+    var completeFile = wrapperHead + output + wrapperFoot;
+    var outputFile = './test/example/syntaxHighlight.html';
+    writeFileSync(outputFile, completeFile);
 });
