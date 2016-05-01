@@ -1,3 +1,8 @@
+// testScanner.js
+// tests for Character and Scanner
+"use strict";
+
+// Also uses character but not required to import
 //var Character = require("../lib/Character.js").Character;
 var Scanner = require("../lib/Scanner.js").Scanner;
 
