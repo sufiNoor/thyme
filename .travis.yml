@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+    - "stable"
+    - "latest"
+    - "0.10"
+    - "0.12"
+    - "4"
+    - "5"
+    - "6"
+before_script:
+    - npm install -g gulp
+script:
+    - gulp test

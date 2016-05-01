@@ -1,13 +1,12 @@
 var gulp = require('gulp');
 
-gulp.task('default', function () {
-    // default gulp task
-});
-
 gulp.task('test', function () {
     // run tests
+    console.log("Starting tests...");
     var testScript = require('./test/test').runTests;
-    testScript();
+    var pass = testScript();
+    if (!pass) { console.log("Tests failed!"); }
+    else { console.log("Tests passed!"); }
 });
 
 gulp.task('watch', ['test'], function () {
@@ -16,3 +15,11 @@ gulp.task('watch', ['test'], function () {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
 });
+
+/*
+gulp.task('travis', ['test'], function () {
+    if (true) { throw "error"; };
+});
+*/
+
+gulp.task('default', ['watch']);
