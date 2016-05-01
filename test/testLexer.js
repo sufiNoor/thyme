@@ -88,9 +88,9 @@ var test = function () {
         source += tokenList[i].value;
     }
     var lexer = new Lexer(filename, source, createTokenTypes());
+    var message = "";
     for (var j = 0; j < tokenList.length; j++) {
         var token = lexer.next();
-        var message = "";
         if (token.type !== tokenList[j].type) {
             message = "Token/Lexer Error: " + "{ type: " + tokenList[j].type + ", value: " + tokenList[j].value + " }\n";
             message += "    types not equal";
@@ -103,7 +103,7 @@ var test = function () {
         }
     }
     if (lexer.next() !== undefined) {
-        var message = "Lexer Error: Lexer did not finished tokenizing source";
+        message = "Lexer Error: Lexer did not finished tokenizing source";
         errors.push(new Error(message));
     }
     return errors;
