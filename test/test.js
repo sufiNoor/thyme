@@ -1,7 +1,10 @@
 // run all tests here
 
 var run = function () {
-    var passedAllTests = true;
+    console.log("Starting tests...");
+    var passedAllTests = false;
+    if (!passedAllTests) { console.log("Tests failed!"); }
+    else { console.log("Tests passed!"); }
     return passedAllTests;
 };
 

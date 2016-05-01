@@ -1,12 +1,7 @@
 var gulp = require('gulp');
 
 gulp.task('test', function () {
-    // run tests
-    console.log("Starting tests...");
-    var testScript = require('./test/test').runTests;
-    var pass = testScript();
-    if (!pass) { console.log("Tests failed!"); }
-    else { console.log("Tests passed!"); }
+    require('./test/test').runTests();
 });
 
 gulp.task('watch', ['test'], function () {
@@ -16,10 +11,11 @@ gulp.task('watch', ['test'], function () {
     });
 });
 
-/*
-gulp.task('travis', ['test'], function () {
-    if (true) { throw "error"; };
+gulp.task('travis', function () {
+    var pass = require('./test/test').runTests();
+    if (!pass) {
+        throw "Tests failed!";
+    }
 });
-*/
 
 gulp.task('default', ['watch']);
